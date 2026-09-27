@@ -1,0 +1,123 @@
+<Window x:Class="QuizForge.Desktop.Views.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quiz History"
+        Height="600"
+        Width="950"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA">
+
+    <Grid Margin="30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#2C5F8D"
+                CornerRadius="12"
+                Padding="25"
+                Margin="0,0,0,15">
+
+            <StackPanel>
+                <TextBlock Text="Quiz History"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                <TextBlock x:Name="WelcomeTextBlock"
+                           Text="Your previous quiz attempts"
+                           FontSize="15"
+                           Foreground="#EAF3F8"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+
+        </Border>
+
+        <!-- Status -->
+        <TextBlock Grid.Row="1"
+                   x:Name="MessageTextBlock"
+                   Text=""
+                   FontSize="15"
+                   Foreground="#555555"
+                   Margin="5,0,0,12"/>
+
+        <!-- History Table -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="12"
+                Padding="15">
+
+            <DataGrid x:Name="HistoryDataGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      RowHeight="45"
+                      FontSize="14">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Attempt"
+                                        Binding="{Binding AttemptId}"
+                                        Width="80"/>
+
+                    <DataGridTextColumn Header="Category"
+                                        Binding="{Binding Attempt.Category.CategoryName}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Score"
+                                        Binding="{Binding Score}"
+                                        Width="100"/>
+
+                    <DataGridTextColumn Header="Percentage"
+                                        Binding="{Binding Percentage, StringFormat={}{0:0.##}%}"
+                                        Width="120"/>
+
+                    <DataGridTextColumn Header="Correct"
+                                        Binding="{Binding Attempt.CorrectAnswers}"
+                                        Width="100"/>
+
+                    <DataGridTextColumn Header="Wrong"
+                                        Binding="{Binding Attempt.WrongAnswers}"
+                                        Width="100"/>
+
+                    <DataGridTextColumn Header="Skipped"
+                                        Binding="{Binding Attempt.SkippedAnswers}"
+                                        Width="100"/>
+
+                    <DataGridTextColumn Header="Date"
+                                        Binding="{Binding CreatedAt, StringFormat={}{0:dd-MM-yyyy HH:mm}}"
+                                        Width="170"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,0,0">
+
+            <Button Content="← Dashboard"
+                    Width="140"
+                    Height="40"
+                    Background="#2C5F8D"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontWeight="SemiBold"
+                    Click="DashboardButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

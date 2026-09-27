@@ -1,0 +1,191 @@
+<Window x:Class="QuizForge.Desktop.Views.QuizWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="QuizForge - Quiz"
+        Height="700"
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F7FB">
+
+    <Grid>
+
+        <!-- Header -->
+        <Grid Height="75"
+              VerticalAlignment="Top"
+              Background="#2563EB">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Margin="30,0,0,0">
+
+                <TextBlock Text="QuizForge"
+                           Foreground="White"
+                           FontSize="28"
+                           FontWeight="Bold"/>
+
+                <TextBlock x:Name="CategoryTextBlock"
+                           Text="Programming"
+                           Foreground="#DBEAFE"
+                           FontSize="14"/>
+            </StackPanel>
+
+            <Border Grid.Column="1"
+                    Background="#1D4ED8"
+                    CornerRadius="10"
+                    Padding="18,8"
+                    Margin="0,0,30,0">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Text="Time: "
+                               Foreground="White"
+                               FontSize="16"/>
+
+                    <TextBlock x:Name="TimerTextBlock"
+                               Text="20"
+                               Foreground="White"
+                               FontSize="16"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Text=" sec"
+                               Foreground="White"
+                               FontSize="16"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+
+        <!-- Main Quiz Area -->
+        <Grid Margin="40,105,40,30">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- Progress -->
+            <StackPanel Grid.Row="0">
+
+                <TextBlock x:Name="QuestionNumberTextBlock"
+                           Text="Question 1 of 5"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="#64748B"/>
+
+                <ProgressBar x:Name="QuizProgressBar"
+                             Height="8"
+                             Minimum="0"
+                             Maximum="5"
+                             Value="1"
+                             Margin="0,10,0,25"/>
+
+            </StackPanel>
+
+
+            <!-- Question -->
+            <Border Grid.Row="1"
+                    Background="White"
+                    CornerRadius="15"
+                    Padding="25"
+                    Margin="0,0,0,20">
+
+                <TextBlock x:Name="QuestionTextBlock"
+                           Text="Question will appear here."
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="#1E293B"
+                           TextWrapping="Wrap"/>
+
+            </Border>
+
+
+            <!-- Options -->
+            <StackPanel Grid.Row="2">
+
+                <RadioButton x:Name="OptionA"
+                             GroupName="QuizOptions"
+                             Content="Option A"
+                             FontSize="17"
+                             Background="White"
+                             Padding="15"
+                             Margin="0,0,0,12"/>
+
+                <RadioButton x:Name="OptionB"
+                             GroupName="QuizOptions"
+                             Content="Option B"
+                             FontSize="17"
+                             Background="White"
+                             Padding="15"
+                             Margin="0,0,0,12"/>
+
+                <RadioButton x:Name="OptionC"
+                             GroupName="QuizOptions"
+                             Content="Option C"
+                             FontSize="17"
+                             Background="White"
+                             Padding="15"
+                             Margin="0,0,0,12"/>
+
+                <RadioButton x:Name="OptionD"
+                             GroupName="QuizOptions"
+                             Content="Option D"
+                             FontSize="17"
+                             Background="White"
+                             Padding="15"
+                             Margin="0,0,0,12"/>
+
+            </StackPanel>
+
+
+            <!-- Bottom Buttons -->
+            <Grid Grid.Row="3"
+                  Margin="0,20,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="PreviousButton"
+                        Grid.Column="0"
+                        Content="← Previous"
+                        Width="120"
+                        Height="42"
+                        Background="#64748B"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="PreviousButton_Click"/>
+
+                <Button x:Name="NextButton"
+                        Grid.Column="2"
+                        Content="Next →"
+                        Width="120"
+                        Height="42"
+                        Background="#2563EB"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="NextButton_Click"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
